@@ -318,13 +318,11 @@ body {
   top: 0;
   left: 0;
   background: #794f45;
+  transition: all 0.2s linear;
   z-index: 3;
 }
 .header.scroll::before {
   background: rgba(117, 93, 154, 0.98);
-}
-.header.scroll .header__button {
-  background: #2e8b57;
 }
 .header__body {
   display: grid;
@@ -347,7 +345,6 @@ body {
 }
 .header__menu {
   grid-column: 3/4;
-  z-index: 5;
 }
 @media (max-width: 991.98px) {
   .header__menu {
@@ -360,7 +357,6 @@ body {
     padding: 160px 0 0 0;
     overflow: auto;
     transition: all 0.2s linear;
-    z-index: 3;
   }
   .header__menu.active {
     top: 0;
@@ -372,6 +368,8 @@ body {
   justify-items: end;
   align-items: center;
   column-gap: 15px;
+  position: relative;
+  z-index: 5;
 }
 @media (max-width: 991.98px) {
   .header__list {
@@ -385,6 +383,7 @@ body {
 }
 .header__button {
   padding: 0 15px;
+  background: #2e8b57;
 }
 .header__burger {
   grid-column: 3/4;

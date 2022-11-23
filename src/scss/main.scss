@@ -253,16 +253,13 @@ body {
     top: 0;
     left: 0;
     background: $terraColor;
+    transition: all 0.2s linear;
     z-index: 3;
   }
 
   &.scroll {
     &::before {
       background: rgb(117, 93, 154, 0.98);
-    }
-
-    .header__button {
-      background: $greenColor;
     }
   }
 
@@ -290,7 +287,6 @@ body {
 
   &__menu {
     grid-column: 3/4;
-    z-index: 5;
 
     @media (max-width: 991.98px) {
       position: fixed;
@@ -302,7 +298,6 @@ body {
       padding: 160px 0 0 0;
       overflow: auto;
       transition: all 0.2s linear;
-      z-index: 3;
 
       &.active {
         top: 0;
@@ -316,6 +311,8 @@ body {
     justify-items: end;
     align-items: center;
     column-gap: 15px;
+    position: relative;
+    z-index: 5;
 
     @media (max-width: 991.98px) {
       grid-auto-flow: row;
@@ -332,6 +329,7 @@ body {
 
   &__button {
     padding: 0 15px;
+    background: $greenColor;
   }
 
   &__burger {
