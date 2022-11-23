@@ -1,0 +1,658 @@
+/*==================== RESET STYLES ====================*/
+@import 'import/reset.scss';
+/*==================== RESET STYLES ====================*/
+
+/*==================== FONTS ====================*/
+@import 'fonts.scss';
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+/*==================== FONTS ====================*/
+
+/*==================== VARIABLES ====================*/
+$maxWidthLayout: 1440;
+$maxWidthContainer: 1080;
+$montFont: 'Montserrat', sans-serif;
+$whiteColor: #fff;
+$blackColor: #000;
+$grayColor: #333;
+$terraColor: #794f45;
+$greenColor: #2e8b57;
+$purpleColor: #755d9a;
+/*==================== VARIABLES ====================*/
+
+/*==================== MIXINS ====================*/
+// responsive value
+@mixin respValue($property, $startSize, $minSize, $type) {
+  $addSize: $startSize - $minSize;
+  @if $type==1 {
+    //Только если меньше контейнера
+    #{$property}: $startSize + px;
+    @media (max-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+    }
+  } @else if $type==2 {
+    //Только если больше контейнера
+    #{$property}: $startSize + px;
+    @media (min-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthLayout - 320}));
+    }
+  } @else {
+    //Всегда
+    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthLayout - 320}));
+  }
+}
+// snippet (rv)
+// responsive value
+/*==================== MIXINS ====================*/
+
+/*==================== BASIC PARAMETERS ====================*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $montFont;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  background: $grayColor;
+  color: $whiteColor;
+
+  @media (max-width: 991.98px) {
+    &.lock {
+      overflow: hidden;
+    }
+  }
+}
+
+.wrapper {
+  // display: flex;
+  // flex-direction: column;
+  // min-height: 100%;
+  // overflow: hidden;
+
+  min-height: 100%;
+  display: grid;
+  // grid-template: minmax(90px, auto) 1fr minmax(70px, auto);
+  // grid-template-areas:
+  //   'header'
+  //   'main'
+  //   'footer';
+  grid-template:
+    [start] 'header' minmax(90px, auto) [row2]
+    [row2] 'main' 1fr [row3]
+    [row3] 'footer' minmax(70px, auto) [row-end] / 1fr;
+}
+
+// .main {
+//   flex: 1 1 auto;
+
+//   &__block-name,
+//   &__block-name {
+//     &:not(:last-child) {
+//       @include respValue('margin-bottom', 90, 60, 1);
+//     }
+//   }
+
+//   &:not(:last-child) {
+//     @include respValue('margin-bottom', 120, 90, 1);
+//   }
+// }
+/*==================== BASIC PARAMETERS ====================*/
+
+/*==================== REPEAT BLOCK ====================*/
+//! Container
+[class*='__container'] {
+  width: 100%;
+  max-width: $maxWidthContainer + px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+//! Responsive
+// js
+@import 'import/ibg.scss';
+
+// or scss
+.ibg {
+  position: relative;
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+}
+
+//! Title
+.title-block-l {
+  font-weight: 600;
+  @include respValue('font-size', 40, 30, 1);
+  letter-spacing: 0.2px;
+
+  &:not(:last-child) {
+    @include respValue(margin-bottom, 25, 20, 1);
+  }
+}
+
+.title-block-m {
+  font-weight: 600;
+  @include respValue('font-size', 24, 20, 1);
+  letter-spacing: 0.2px;
+
+  &:not(:last-child) {
+    @include respValue(margin-bottom, 20, 15, 1);
+  }
+}
+
+//! Button
+.button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 150px;
+  width: 100%;
+  padding: 7px;
+  background: $purpleColor;
+  min-height: 50px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  text-transform: capitalize;
+  color: $whiteColor;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.2s linear;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 2em;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(238, 238, 238, 0.7);
+    border-radius: 4px;
+    overflow: hidden;
+    transform: translateX(-4em) skewX(-45deg);
+    transition: all 0.2s linear;
+  }
+
+  &:hover {
+    &::before {
+      animation: highlight 0.4s linear;
+    }
+  }
+}
+
+@keyframes highlight {
+  0% {
+    transform: translateX(-4em) skewX(-45deg);
+  }
+  100% {
+    transform: translateX(10em) skewX(-45deg);
+  }
+}
+
+//! Link
+[class*='__link'] {
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+  color: $whiteColor;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1.4px;
+    bottom: -2px;
+    left: 0;
+    background: $whiteColor;
+    transform: scale(0);
+    visibility: hidden;
+    transition: all 0.1s linear;
+  }
+
+  @media (min-width: 991.98px) {
+    &:hover {
+      &::before {
+        visibility: visible;
+        transform: scale(1);
+      }
+    }
+  }
+}
+/*==================== REPEAT BLOCK ====================*/
+
+//todo: HEADER
+.header {
+  grid-area: header;
+  // background: $terraColor;
+  display: grid;
+  align-items: center;
+
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  transition: all 0.2s linear;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: $terraColor;
+    z-index: 3;
+  }
+
+  &.scroll {
+    &::before {
+      background: rgb(117, 93, 154, 0.98);
+    }
+
+    .header__button {
+      background: $greenColor;
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+    align-items: center;
+    padding: 5px 15px;
+  }
+
+  &__logo {
+    grid-column: 2/3;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: $whiteColor;
+    overflow: hidden;
+    outline: 2px solid $purpleColor;
+    z-index: 5;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &__menu {
+    grid-column: 3/4;
+    z-index: 5;
+
+    @media (max-width: 991.98px) {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: -100%;
+      left: 0;
+      background: $purpleColor;
+      padding: 160px 0 0 0;
+      overflow: auto;
+      transition: all 0.2s linear;
+      z-index: 3;
+
+      &.active {
+        top: 0;
+      }
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: end;
+    align-items: center;
+    column-gap: 15px;
+
+    @media (max-width: 991.98px) {
+      grid-auto-flow: row;
+      justify-items: center;
+      row-gap: 30px;
+    }
+  }
+
+  &__link {
+    &.active {
+      font-size: 30px;
+    }
+  }
+
+  &__button {
+    padding: 0 15px;
+  }
+
+  &__burger {
+    grid-column: 3/4;
+    justify-self: end;
+    background: none;
+
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template: repeat(3, 6.7px) / 30px;
+
+    span {
+      position: absolute;
+      width: 100%;
+      height: 1.8px;
+      top: 9px;
+      left: 0;
+      background: $whiteColor;
+      transition: all 0.2s linear;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1.8px;
+      left: 0;
+      background: $whiteColor;
+      transition: all 0.2s linear;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+
+    &.active {
+      span {
+        transform: scale(0);
+      }
+
+      &::before {
+        transform: rotate(45deg);
+        top: 9px;
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+        bottom: 9px;
+      }
+
+      &:active {
+        span,
+        &::before,
+        &::after {
+          background: $purpleColor;
+        }
+      }
+    }
+
+    @media (min-width: 991.98px) {
+      display: none;
+    }
+  }
+}
+
+//todo MAIN
+.main {
+  padding: 120px 15px;
+
+  @media (min-width: 991.98px) {
+    grid-area: main;
+    display: grid;
+    grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+    padding: 30px 15px;
+  }
+}
+
+//todo SIDEBAR
+.sidebar {
+  background: $greenColor;
+  padding: 15px;
+  margin: 0 0 30px 0;
+  border-radius: 4px;
+  overflow: hidden;
+
+  &__menu {
+  }
+
+  &__list {
+    display: grid;
+    gap: 15px;
+  }
+
+  &__list-item {
+  }
+
+  &__link {
+  }
+
+  @media (min-width: 991.98px) {
+    grid-column: 2/3;
+    margin: 0;
+  }
+}
+
+//todo CONTENT
+.content {
+  &__title {
+  }
+
+  &__galley {
+    @include respValue(margin-bottom, 50, 30, 1);
+  }
+
+  &__products {
+  }
+
+  @media (min-width: 991.98px) {
+    grid-column: 3/4;
+    padding: 0 0 0 30px;
+  }
+}
+
+//todo GALLERY
+.gallery {
+  &__title {
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  &__item {
+    padding: 0 0 90% 0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+
+    @media (min-width: 767.98px) {
+      &_big {
+        grid-row: span 2;
+        grid-column: span 2;
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(117, 93, 154, 0.7);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.1s linear;
+      z-index: 1;
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      font-family: 'Permanent Marker', cursive;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.1s linear;
+    }
+
+    &:hover {
+      span,
+      &::before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+//todo PRODUCTS
+.products {
+  &__title {
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    row-gap: 50px;
+    column-gap: 30px;
+    // grid-auto-rows: 1fr;
+  }
+
+  &__item {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template: auto 1fr minmax(50px, auto) / 1fr;
+    gap: 15px;
+  }
+
+  &__image {
+    padding: 0 0 70% 0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(46, 139, 87, 0.7);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.1s linear;
+      z-index: 1;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+  }
+
+  &__button {
+  }
+}
+
+//todo FOOTER
+.footer {
+  grid-area: footer;
+  background: $purpleColor;
+  display: grid;
+  grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+  align-items: center;
+  padding: 15px;
+
+  &__copy {
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    color: $whiteColor;
+  }
+
+  &__socials {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__icon-link {
+    [name='logo-linkedin'],
+    [name='logo-facebook'],
+    [name='logo-instagram'],
+    [name='logo-youtube'] {
+      font-size: 30px;
+      transition: color 0.1s linear;
+    }
+
+    &:hover {
+      [name='logo-linkedin'] {
+        color: #0172b1;
+      }
+      [name='logo-facebook'] {
+        color: #1773ea;
+      }
+      [name='logo-instagram'] {
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      [name='logo-youtube'] {
+        color: #ff0000;
+      }
+    }
+  }
+
+  @media (min-width: 500px) {
+    &__copy {
+      grid-column: 2/3;
+    }
+
+    &__socials {
+      grid-column: 3/4;
+      justify-self: end;
+    }
+  }
+
+  @media (max-width: 500px) {
+    grid-template: repeat(2, 1fr) / 1fr;
+    justify-items: center;
+    gap: 15px;
+
+    &__copy {
+      order: 2;
+    }
+
+    &__socials {
+      order: 1;
+    }
+  }
+}

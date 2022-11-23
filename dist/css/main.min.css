@@ -1,0 +1,637 @@
+/*==================== RESET STYLES ====================*/
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 100%;
+  font-size: 14px;
+  line-height: 1;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+/*==================== RESET STYLES ====================*/
+/*==================== FONTS ====================*/
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-Medium.woff2") format("woff2"), url("../fonts/Montserrat-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: Montserrat;
+  font-display: swap;
+  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+/*==================== FONTS ====================*/
+/*==================== VARIABLES ====================*/
+/*==================== VARIABLES ====================*/
+/*==================== MIXINS ====================*/
+/*==================== MIXINS ====================*/
+/*==================== BASIC PARAMETERS ====================*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  background: #333;
+  color: #fff;
+}
+@media (max-width: 991.98px) {
+  body.lock {
+    overflow: hidden;
+  }
+}
+
+.wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template: [start] "header" minmax(90px, auto) [row2] [row2] "main" 1fr [row3] [row3] "footer" minmax(70px, auto) [row-end]/1fr;
+}
+
+/*==================== BASIC PARAMETERS ====================*/
+/*==================== REPEAT BLOCK ====================*/
+[class*=__container] {
+  width: 100%;
+  max-width: 1080px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.ibg-ie {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.ibg-ie img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ibg {
+  position: relative;
+}
+.ibg img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.title-block-l {
+  font-weight: 600;
+  font-size: 40px;
+  letter-spacing: 0.2px;
+}
+@media (max-width: 1080px) {
+  .title-block-l {
+    font-size: calc(30px + 10 * ((100vw - 320px) / 760));
+  }
+}
+.title-block-l:not(:last-child) {
+  margin-bottom: 25px;
+}
+@media (max-width: 1080px) {
+  .title-block-l:not(:last-child) {
+    margin-bottom: calc(20px + 5 * ((100vw - 320px) / 760));
+  }
+}
+
+.title-block-m {
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+}
+@media (max-width: 1080px) {
+  .title-block-m {
+    font-size: calc(20px + 4 * ((100vw - 320px) / 760));
+  }
+}
+.title-block-m:not(:last-child) {
+  margin-bottom: 20px;
+}
+@media (max-width: 1080px) {
+  .title-block-m:not(:last-child) {
+    margin-bottom: calc(15px + 5 * ((100vw - 320px) / 760));
+  }
+}
+
+.button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 150px;
+  width: 100%;
+  padding: 7px;
+  background: #755d9a;
+  min-height: 50px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  text-transform: capitalize;
+  color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+.button::before {
+  content: "";
+  position: absolute;
+  width: 2em;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(238, 238, 238, 0.7);
+  border-radius: 4px;
+  overflow: hidden;
+  transform: translateX(-4em) skewX(-45deg);
+  transition: all 0.2s linear;
+}
+.button:hover::before {
+  animation: highlight 0.4s linear;
+}
+
+@keyframes highlight {
+  0% {
+    transform: translateX(-4em) skewX(-45deg);
+  }
+  100% {
+    transform: translateX(10em) skewX(-45deg);
+  }
+}
+[class*=__link] {
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+  color: #fff;
+}
+[class*=__link]::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1.4px;
+  bottom: -2px;
+  left: 0;
+  background: #fff;
+  transform: scale(0);
+  visibility: hidden;
+  transition: all 0.1s linear;
+}
+@media (min-width: 991.98px) {
+  [class*=__link]:hover::before {
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+
+/*==================== REPEAT BLOCK ====================*/
+.header {
+  grid-area: header;
+  display: grid;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  transition: all 0.2s linear;
+}
+.header::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #794f45;
+  z-index: 3;
+}
+.header.scroll::before {
+  background: rgba(117, 93, 154, 0.98);
+}
+.header.scroll .header__button {
+  background: #2e8b57;
+}
+.header__body {
+  display: grid;
+  grid-template: 1fr/1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+  align-items: center;
+  padding: 5px 15px;
+}
+.header__logo {
+  grid-column: 2/3;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fff;
+  overflow: hidden;
+  outline: 2px solid #755d9a;
+  z-index: 5;
+}
+.header__logo img {
+  max-width: 100%;
+}
+.header__menu {
+  grid-column: 3/4;
+  z-index: 5;
+}
+@media (max-width: 991.98px) {
+  .header__menu {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    left: 0;
+    background: #755d9a;
+    padding: 160px 0 0 0;
+    overflow: auto;
+    transition: all 0.2s linear;
+    z-index: 3;
+  }
+  .header__menu.active {
+    top: 0;
+  }
+}
+.header__list {
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: end;
+  align-items: center;
+  column-gap: 15px;
+}
+@media (max-width: 991.98px) {
+  .header__list {
+    grid-auto-flow: row;
+    justify-items: center;
+    row-gap: 30px;
+  }
+}
+.header__link.active {
+  font-size: 30px;
+}
+.header__button {
+  padding: 0 15px;
+}
+.header__burger {
+  grid-column: 3/4;
+  justify-self: end;
+  background: none;
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template: repeat(3, 6.7px)/30px;
+}
+.header__burger span {
+  position: absolute;
+  width: 100%;
+  height: 1.8px;
+  top: 9px;
+  left: 0;
+  background: #fff;
+  transition: all 0.2s linear;
+}
+.header__burger::before, .header__burger::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1.8px;
+  left: 0;
+  background: #fff;
+  transition: all 0.2s linear;
+}
+.header__burger::before {
+  top: 0;
+}
+.header__burger::after {
+  bottom: 0;
+}
+.header__burger.active span {
+  transform: scale(0);
+}
+.header__burger.active::before {
+  transform: rotate(45deg);
+  top: 9px;
+}
+.header__burger.active::after {
+  transform: rotate(-45deg);
+  bottom: 9px;
+}
+.header__burger.active:active span, .header__burger.active:active::before, .header__burger.active:active::after {
+  background: #755d9a;
+}
+@media (min-width: 991.98px) {
+  .header__burger {
+    display: none;
+  }
+}
+
+.main {
+  padding: 120px 15px;
+}
+@media (min-width: 991.98px) {
+  .main {
+    grid-area: main;
+    display: grid;
+    grid-template: 1fr/1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+    padding: 30px 15px;
+  }
+}
+
+.sidebar {
+  background: #2e8b57;
+  padding: 15px;
+  margin: 0 0 30px 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.sidebar__list {
+  display: grid;
+  gap: 15px;
+}
+@media (min-width: 991.98px) {
+  .sidebar {
+    grid-column: 2/3;
+    margin: 0;
+  }
+}
+
+.content__galley {
+  margin-bottom: 50px;
+}
+@media (max-width: 1080px) {
+  .content__galley {
+    margin-bottom: calc(30px + 20 * ((100vw - 320px) / 760));
+  }
+}
+@media (min-width: 991.98px) {
+  .content {
+    grid-column: 3/4;
+    padding: 0 0 0 30px;
+  }
+}
+
+.gallery__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+.gallery__item {
+  padding: 0 0 90% 0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+@media (min-width: 767.98px) {
+  .gallery__item_big {
+    grid-row: span 2;
+    grid-column: span 2;
+  }
+}
+.gallery__item::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(117, 93, 154, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.1s linear;
+  z-index: 1;
+}
+.gallery__item span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-family: "Permanent Marker", cursive;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.1s linear;
+}
+.gallery__item:hover span, .gallery__item:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.products__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  row-gap: 50px;
+  column-gap: 30px;
+}
+.products__item {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template: auto 1fr minmax(50px, auto)/1fr;
+  gap: 15px;
+}
+.products__image {
+  padding: 0 0 70% 0;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.products__image::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(46, 139, 87, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.1s linear;
+  z-index: 1;
+}
+.products__image:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.products__name {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+}
+.footer {
+  grid-area: footer;
+  background: #755d9a;
+  display: grid;
+  grid-template: 1fr/1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+  align-items: center;
+  padding: 15px;
+}
+.footer__copy {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  text-transform: capitalize;
+  color: #fff;
+}
+.footer__socials {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 15px;
+}
+.footer__icon-link [name=logo-linkedin],
+.footer__icon-link [name=logo-facebook],
+.footer__icon-link [name=logo-instagram],
+.footer__icon-link [name=logo-youtube] {
+  font-size: 30px;
+  transition: color 0.1s linear;
+}
+.footer__icon-link:hover [name=logo-linkedin] {
+  color: #0172b1;
+}
+.footer__icon-link:hover [name=logo-facebook] {
+  color: #1773ea;
+}
+.footer__icon-link:hover [name=logo-instagram] {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.footer__icon-link:hover [name=logo-youtube] {
+  color: #ff0000;
+}
+@media (min-width: 500px) {
+  .footer__copy {
+    grid-column: 2/3;
+  }
+  .footer__socials {
+    grid-column: 3/4;
+    justify-self: end;
+  }
+}
+@media (max-width: 500px) {
+  .footer {
+    grid-template: repeat(2, 1fr)/1fr;
+    justify-items: center;
+    gap: 15px;
+  }
+  .footer__copy {
+    order: 2;
+  }
+  .footer__socials {
+    order: 1;
+  }
+}
